@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html>
+<body style = "margin: 0">
+{{#if logged}}
+	<div style = "background-color:#CBDCFC; width: 100%; padding-bottom: 2.33vh">
+		<div style="float: left"> <a href="/">HOME</a></div>
+		<div style="float: right">Logged in as: {{username}} | <a href="/logout">LOG OUT</a> </div>	
+		</div>
+{{else}}
+	<div style = "background-color:#CBDCFC; width: 100%; padding-bottom: 2.33vh">
+		<div style="float: left"> <a href="/">HOME</a></div>
+		<div style="float: right"> <a href="/register">REGISTER</a> | <a href="/login">LOG IN</a></div>	
+		</div>
+{{/if}}
+</body>
 
-<h3>Submit a new Question?</h3>
+{{#if message}}
+<body style = "margin: 0">
+<div style = "background-color:#EDCBCB; width: 100%; padding-bottom: 2.33vh">
+<div class="error"><center>{{ message }}</center></div>
+</div>
+</body>
+{{/if}}
 
-<form action = '/' method=post id = "addform">
-Question<br>
-<input type = "text" name = "title" placeholder = "title"  style="width: 200px;"><br>
-<input type = "submit" value = "submit">
+<hr>
+
+<b>   SUBMIT A NEW QUESTION?</b><br>
+<form action = '/' method=post id = "addform">  Question: <input type = "text" name = "title" placeholder = "Ask"  style="width: 200px;"> <input type = "submit" value = "Submit">
 </form>
 
-<p>........................................................................................................................................................................</p>
+<br>     OR   <br>
+<br>
 
+<b>  SEARCH FOR QUESTIONS?</b><br>
+<form action = '/' method=get id = "addform">  Keyword(s): <input type = "text" name = "search" placeholder = "Search"  style="width: 200px;"> <input type = "submit" value = "Search">
+<hr>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 Posts<br>
 <table style="width:20%">
   <tr>
@@ -18,18 +43,13 @@ Posts<br>
     <th>__________________Question__________________</th> 
     <th>___User___</th>
     <th>_______Date_______</th>
-    <th>_Modify_</th>
-    <th>_Delete_</th>
-
   </tr>
 {{#each plist}}
     <tr>
         <td>{{@index}}</td>
-        <td>{{Content}}</td>
+        <td><a href="/Post/{{_id}}">{{Content}}</a></td>
         <td>{{Poster}}</td>
         <td>{{Date}}</td>
-        <td><form action = "/Modify/{{_id}}" method=post id = "addform">  <input type = "submit" value = "Modify"></form></td>
-        <td><form action = "/Delete/{{_id}}" method=post id = "addform">  <input type = "submit" value = "Delete"></form></td>
     </tr>
 {{/each}}
 </table>

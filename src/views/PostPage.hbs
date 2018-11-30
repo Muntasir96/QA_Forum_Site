@@ -1,0 +1,65 @@
+<html>
+<body style = "margin: 0">
+{{#if logged}}
+	<div style = "background-color:#CBDCFC; width: 100%; padding-bottom: 2.33vh">
+		<div style="float: left"> <a href="/">HOME</a></div>
+		<div style="float: right">Logged in as: {{username}} | <a href="/logout">LOG OUT</a> </div>	
+		</div>
+{{else}}
+	<div style = "background-color:#CBDCFC; width: 100%; padding-bottom: 2.33vh">
+		<div style="float: left"> <a href="/">HOME</a></div>
+		<div style="float: right"> <a href="/register">REGISTER</a> | <a href="/login">LOG IN</a></div>	
+		</div>
+{{/if}}
+</body>
+<br>
+	<center><p style = "font-size:40px; line-height: 1px; height: 1px">{{content}}</p></center>
+    <br>
+	<center><p style = "font-size:25px; line-height: 1px; height: 1px">asked by {{poster}}</p></center>
+
+<hr>
+{{#if message}}
+<body style = "margin: 0">
+<div style = "background-color:#EDCBCB; width: 100%; padding-bottom: 2.33vh">
+<div class="error"><center>{{ message }}</center></div>
+</div>
+</body>
+{{/if}}
+<h3>Submit a new Answer?</h3>
+<form action = "/Post/{{pid}}" method=post id = "addform">
+Answer<br>
+<input type = "text" name = "title" placeholder = "title"  style="width: 200px;"><br>
+<input type = "submit" value = "submit">
+</form>
+<hr>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+Comments<br>
+<table style="width:20%">
+  <tr>
+    <th>_#_</th>
+    <th>__________________Answer__________________</th> 
+    <th>___User___</th>
+    <th>_______Date_______</th>
+    <th>_Modify_</th>
+    <th>_Delete_</th>
+
+  </tr>
+{{#each comments}}
+    <tr>
+        <td>{{@index}}</td>
+        <td>{{Content}}</td>
+        <td>{{Poster}}</td>
+        <td>{{Date}}</td>
+        <td><form action = "/Modify/{{Poster}}/{{_id}}" method=post id = "addform">  <input type = "submit" value = "Modify"></form></td>
+        <td><form action = "/Delete/{{Poster}}/{{_id}}" method=post id = "addform">  <input type = "submit" value = "Delete"></form></td>
+
+    </tr>
+{{/each}}
+</table>
+
+</html>
+

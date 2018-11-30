@@ -1,17 +1,22 @@
-<h2>Login</h2>
+<h2><center>Login</center></h2>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 {{#if message}}
-<div class="error">{{ message }}</div>
+<body style = "margin: 0">
+<div style = "background-color:#EDCBCB; width: 100%; padding-bottom: 2.33vh">
+<div class="error"><center>{{ message }}</center></div>
+</div>
+</body>
 {{/if}}
-<form method="POST" action="login">
-	<div>
-		<label for="username">Username:</label>
-		<input type="text" name="username" value="">
-	</div>
-	<div>
-		<label for="password">Password:</label> 
-		<input type="password" name="password" value="">
-	</div>
-	<div>
-		<input type="submit" value="Login">
-	</div>
+
+<form method="POST" action="">
+		<center>username: <input name="username" type="text"></center><br>
+		<center>password: <input name="password" type="password"></center><br>	
+		<center><input type="submit" value="Submit"></center>
 </form>

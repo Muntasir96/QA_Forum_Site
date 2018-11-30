@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const URLSlugs = require('mongoose-url-slugs');
+const passportLocalMongoose = require('passport-local-mongoose');
+
 
 // add your schemas
 // use plugins (for slug)
@@ -10,7 +12,7 @@ const Comment = new mongoose.Schema({
     Content: String,
     Likes: Number,
     Dislikes: Number,
-    ID: Number,
+    ID: String,
     Poster: String,
     Date: String
 });
@@ -26,12 +28,9 @@ const Post = new mongoose.Schema({
     Comment: [Comment]
 });
 
-const User = new mongoose.Schema({
-    ID: Number,
-    userName: String,
-    passWord: String
-});
+const User = new mongoose.Schema({ });
 
+User.plugin(passportLocalMongoose);
 Post.plugin(URLSlugs("_id"));
 
 mongoose.model('Post',Post);
