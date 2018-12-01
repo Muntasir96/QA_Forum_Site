@@ -53,9 +53,6 @@ app.use(session({
 
 
 app.get('/', (req, res) => { // home page where you can filter posts by key word and sort stuff
-    console.log(req.query);
-
-
     Post.find({}, function(err,postList){ // filters
         if(err){
             throw err;
@@ -386,7 +383,7 @@ app.post('/login', (req, res, next) => {
             res.redirect('/');
           });
         } else {
-          res.render('login', {message:'Your login or password is incorrect.'});
+          res.render('login', {message:'Username does not exist or password does not match.'});
         }
       })(req, res, next);
 });
